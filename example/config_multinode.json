@@ -1,0 +1,116 @@
+{
+    "Log": {
+        "Level": "info",
+        "Output": "",
+        "DnsLog": false,
+        "MaskAddress": "half"
+    },
+    "Xray": {
+        "DnsConfigPath": "example/dns.json",
+        "RouteConfigPath": "",
+        "OutboundConfigPath": "example/outbound.json",
+        "ConnectionConfig": {
+            "Handshake": 4,
+            "ConnIdle": 30,
+            "UplinkOnly": 2,
+            "DownlinkOnly": 4,
+            "BufferSize": 64
+        }
+    },
+    "Nodes": [
+        // ==================== Panel 1 ====================
+        {
+            "ApiHost": "https://panel1.example.com",
+            "ApiKey": "your_panel1_api_key",
+            "NodeID": 1,
+            "NodeType": "vless",
+            "Timeout": 30,
+            "ListenIP": "0.0.0.0",
+            "SendIP": "0.0.0.0",
+            "DeviceOnlineMinTraffic": 200,
+            "EnableProxyProtocol": false,
+            "EnableFallback": false,
+            "EnableDNS": false,
+            "CertConfig": {
+                "CertMode": "none"
+            }
+        },
+        {
+            "ApiHost": "https://panel1.example.com",
+            "ApiKey": "your_panel1_api_key",
+            "NodeID": 2,
+            "NodeType": "vmess",
+            "Timeout": 30,
+            "ListenIP": "0.0.0.0",
+            "SendIP": "0.0.0.0",
+            "DeviceOnlineMinTraffic": 200
+        },
+        // ==================== Panel 2 ====================
+        {
+            "ApiHost": "https://panel2.example.com",
+            "ApiKey": "your_panel2_api_key",
+            "NodeID": 10,
+            "NodeType": "trojan",
+            "Timeout": 30,
+            "ListenIP": "0.0.0.0",
+            "SendIP": "0.0.0.0",
+            "DeviceOnlineMinTraffic": 200,
+            "CertConfig": {
+                "CertMode": "file",
+                "CertFile": "/path/to/panel2_cert.pem",
+                "KeyFile": "/path/to/panel2_key.pem"
+            }
+        },
+        {
+            "ApiHost": "https://panel2.example.com",
+            "ApiKey": "your_panel2_api_key",
+            "NodeID": 11,
+            "NodeType": "shadowsocks",
+            "Timeout": 30,
+            "ListenIP": "0.0.0.0",
+            "SendIP": "0.0.0.0"
+        },
+        // ==================== Panel 3 (Cloudflare DNS 证书) ====================
+        // 方式一: 使用 Global API Key
+        {
+            "ApiHost": "https://panel3.example.com",
+            "ApiKey": "your_panel3_api_key",
+            "NodeID": 5,
+            "NodeType": "vless",
+            "Timeout": 30,
+            "ListenIP": "0.0.0.0",
+            "SendIP": "0.0.0.0",
+            "DeviceOnlineMinTraffic": 200,
+            "CertConfig": {
+                "CertMode": "dns",
+                "CertDomain": "node5.example.com",
+                "Provider": "cloudflare",
+                "Email": "your_email@example.com",
+                "DNSEnv": {
+                    "CF_API_EMAIL": "your_cloudflare_email@example.com",
+                    "CF_API_KEY": "your_cloudflare_global_api_key"
+                }
+            }
+        },
+        // 方式二: 使用 API Token (推荐，权限更小更安全)
+        {
+            "ApiHost": "https://panel3.example.com",
+            "ApiKey": "your_panel3_api_key",
+            "NodeID": 6,
+            "NodeType": "trojan",
+            "Timeout": 30,
+            "ListenIP": "0.0.0.0",
+            "SendIP": "0.0.0.0",
+            "DeviceOnlineMinTraffic": 200,
+            "CertConfig": {
+                "CertMode": "dns",
+                "CertDomain": "node6.example.com",
+                "Provider": "cloudflare",
+                "Email": "your_email@example.com",
+                "DNSEnv": {
+                    "CF_DNS_API_TOKEN": "your_cloudflare_dns_api_token"
+                }
+            }
+        }
+    ]
+}

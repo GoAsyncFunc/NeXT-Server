@@ -1,0 +1,24 @@
+# Logs
+example/access.logo
+example/error.log
+
+# Backup files
+api/chooseparser.go.bak
+
+# Certificate directories
+app/Inboundbuilder/.lego/
+app/legocmd/.lego/
+example/.lego
+example/cert
+
+# IDE and editor files
+.vscode/launch.json
+./vscode
+.idea/*
+
+# Build outputs
+output/*
+
+# MacOS files
+.DS_Store
+._*

@@ -1,0 +1,17 @@
+{
+  "darwin-amd64": {
+    "friendlyName": "macos-64"
+  },
+  "darwin-arm64": {
+    "friendlyName": "macos-arm64-v8a"
+  },
+  "linux-amd64": {
+    "friendlyName": "linux-64"
+  },
+  "linux-arm64": {
+    "friendlyName": "linux-arm64-v8a"
+  },
+  "windows-amd64": {
+    "friendlyName": "windows-64"
+  }
+}
