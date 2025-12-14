@@ -1,0 +1,38 @@
+{
+  "Log": {
+    "Level": "debug",
+    "Output": "",
+    "DnsLog": true,
+    "MaskAddress": "full"
+  },
+  "Xray": {
+    "DnsConfigPath": "example/dns.json",
+    "RouteConfigPath": "",
+    "OutboundConfigPath": "example/outbound.json",
+    "ConnectionConfig": {
+      "Handshake": 4,
+      "ConnIdle": 30,
+      "UplinkOnly": 2,
+      "DownlinkOnly": 4,
+      "BufferSize": 64
+    }
+  },
+  "Nodes": [
+    {
+      "ApiHost": "https://stao.top",
+      "ApiKey": "xabcdefghijk123456",
+      "NodeID": 1,
+      "NodeType": "vless",
+      "Timeout": 30,
+      "ListenIP": "0.0.0.0",
+      "SendIP": "0.0.0.0",
+      "DeviceOnlineMinTraffic": 200,
+      "EnableProxyProtocol": false,
+      "EnableFallback": false,
+      "EnableDNS": false,
+      "CertConfig": {
+        "CertMode": "none"
+      }
+    }
+  ]
+}
